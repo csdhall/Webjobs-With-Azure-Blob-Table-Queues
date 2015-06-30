@@ -1,0 +1,10 @@
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\ContosoAdsCommon.dll.config
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\ContosoAdsCommon.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\ContosoAdsCommon.pdb
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\EntityFramework.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\EntityFramework.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.csprojResolveAssemblyReference.cache
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.pdb
