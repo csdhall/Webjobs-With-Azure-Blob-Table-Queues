@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace ContosoAdsWebJob
 {
@@ -28,17 +29,18 @@ namespace ContosoAdsWebJob
 
             // Entity Framework context class is not thread-safe, so it must
             // be instantiated and disposed within the function.
-            using (ContosoAdsContext db = new ContosoAdsContext())
+            ContosoAdsContext tableContext = new ContosoAdsContext();
+            var id = blobInfo.AdId;
+            Ad ad = tableContext.GetAd(id);
+            if (ad == null)
             {
-                var id = blobInfo.AdId;
-                Ad ad = db.Ads.Find(id);
-                if (ad == null)
-                {
-                    throw new Exception(String.Format("AdId {0} not found, can't create thumbnail", id.ToString()));
-                }
-                ad.ThumbnailURL = outputBlob.Uri.ToString();
-                db.SaveChanges();
+                throw new Exception(String.Format("AdId {0} not found, can't create thumbnail", id.ToString()));
             }
+            ad.ThumbnailURL = outputBlob.Uri.ToString();
+            TableOperation updateOperation = TableOperation.Replace(ad);
+
+            // Execute the operation.
+            tableContext.Table.Execute(updateOperation);
         }
 
         public static void ConvertImageToThumbnailJPG(Stream input, Stream output)

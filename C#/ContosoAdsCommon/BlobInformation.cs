@@ -26,7 +26,7 @@ namespace ContosoAdsCommon
                 return Path.GetFileNameWithoutExtension(BlobName);
             }
         }
-        public int AdId { get; set; }
+        public Guid AdId { get; set; }
     }
 }
 

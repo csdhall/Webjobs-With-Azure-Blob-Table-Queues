@@ -8,3 +8,16 @@ C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.csprojResolveAssemblyReference.cache
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.dll
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\obj\Debug\ContosoAdsCommon.pdb
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.Edm.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.Services.Client.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.OData.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Newtonsoft.Json.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\System.Spatial.dll
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.Edm.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.Services.Client.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\Microsoft.Data.OData.xml
+C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsCommon\bin\Debug\System.Spatial.xml

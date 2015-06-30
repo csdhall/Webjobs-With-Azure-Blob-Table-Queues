@@ -55,28 +55,28 @@ namespace ContosoAdsWeb.Controllers
         }
 
         // GET: Ad
-        public async Task<ActionResult> Index(int? category)
+        public ActionResult Index(int? category)
         {
             // This code executes an unbounded query; don't do this in a production app,
             // it could return too many rows for the web app to handle. For an example
             // of paging code, see:
             // http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
-            var adsList = db.Ads.AsQueryable();
+            var adsList = db.GetAds();
             if (category != null)
             {
                 adsList = adsList.Where(a => a.Category == (Category)category);
             }
-            return View(await adsList.ToListAsync());
+            return View(adsList.ToList());
         }
 
         // GET: Ad/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ad ad = await db.Ads.FindAsync(id);
+            Ad ad = db.GetAd(id.Value);
             if (ad == null)
             {
                 return HttpNotFound();
@@ -108,8 +108,8 @@ namespace ContosoAdsWeb.Controllers
                     ad.ImageURL = imageBlob.Uri.ToString();
                 }
                 ad.PostedDate = DateTime.Now;
-                db.Ads.Add(ad);
-                await db.SaveChangesAsync();
+                db.Add(ad);
+                
                 Trace.TraceInformation("Created AdId {0} in database", ad.AdId);
 
                 if (imageBlob != null)
@@ -126,13 +126,13 @@ namespace ContosoAdsWeb.Controllers
         }
 
         // GET: Ad/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ad ad = await db.Ads.FindAsync(id);
+            Ad ad = db.GetAd(id.Value);
             if (ad == null)
             {
                 return HttpNotFound();
@@ -143,47 +143,47 @@ namespace ContosoAdsWeb.Controllers
         // POST: Ad/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(Include = "AdId,Title,Price,Description,ImageURL,ThumbnailURL,PostedDate,Category,Phone")] Ad ad,
-            HttpPostedFileBase imageFile)
-        {
-            CloudBlockBlob imageBlob = null;
-            if (ModelState.IsValid)
-            {
-                if (imageFile != null && imageFile.ContentLength != 0)
-                {
-                    // User is changing the image -- delete the existing
-                    // image blobs and then upload and save a new one.
-                    await DeleteAdBlobsAsync(ad);
-                    imageBlob = await UploadAndSaveBlobAsync(imageFile);
-                    ad.ImageURL = imageBlob.Uri.ToString();
-                }
-                db.Entry(ad).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                Trace.TraceInformation("Updated AdId {0} in database", ad.AdId);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Edit(
+        //    [Bind(Include = "AdId,Title,Price,Description,ImageURL,ThumbnailURL,PostedDate,Category,Phone")] Ad ad,
+        //    HttpPostedFileBase imageFile)
+        //{
+        //    CloudBlockBlob imageBlob = null;
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (imageFile != null && imageFile.ContentLength != 0)
+        //        {
+        //            // User is changing the image -- delete the existing
+        //            // image blobs and then upload and save a new one.
+        //            await DeleteAdBlobsAsync(ad);
+        //            imageBlob = await UploadAndSaveBlobAsync(imageFile);
+        //            ad.ImageURL = imageBlob.Uri.ToString();
+        //        }
+        //        db.Entry(ad).State = EntityState.Modified;
+        //        await db.SaveChangesAsync();
+        //        Trace.TraceInformation("Updated AdId {0} in database", ad.AdId);
 
-                if (imageBlob != null)
-                {
-                    BlobInformation blobInfo = new BlobInformation() { AdId = ad.AdId, BlobUri = new Uri(ad.ImageURL) };
-                    var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
-                    await thumbnailRequestQueue.AddMessageAsync(queueMessage);
-                    Trace.TraceInformation("Created queue message for AdId {0}", ad.AdId);
-                }
-                return RedirectToAction("Index");
-            }
-            return View(ad);
-        }
+        //        if (imageBlob != null)
+        //        {
+        //            BlobInformation blobInfo = new BlobInformation() { AdId = ad.AdId, BlobUri = new Uri(ad.ImageURL) };
+        //            var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+        //            await thumbnailRequestQueue.AddMessageAsync(queueMessage);
+        //            Trace.TraceInformation("Created queue message for AdId {0}", ad.AdId);
+        //        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(ad);
+        //}
 
         // GET: Ad/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ad ad = await db.Ads.FindAsync(id);
+            Ad ad = db.GetAd(id.Value);
             if (ad == null)
             {
                 return HttpNotFound();
@@ -192,19 +192,19 @@ namespace ContosoAdsWeb.Controllers
         }
 
         // POST: Ad/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Ad ad = await db.Ads.FindAsync(id);
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Ad ad = await db.Ads.FindAsync(id);
 
-            await DeleteAdBlobsAsync(ad);
+        //    await DeleteAdBlobsAsync(ad);
 
-            db.Ads.Remove(ad);
-            await db.SaveChangesAsync();
-            Trace.TraceInformation("Deleted ad {0}", ad.AdId);
-            return RedirectToAction("Index");
-        }
+        //    db.Ads.Remove(ad);
+        //    await db.SaveChangesAsync();
+        //    Trace.TraceInformation("Deleted ad {0}", ad.AdId);
+        //    return RedirectToAction("Index");
+        //}
 
         private async Task<CloudBlockBlob> UploadAndSaveBlobAsync(HttpPostedFileBase imageFile)
         {
@@ -246,13 +246,13 @@ namespace ContosoAdsWeb.Controllers
             await blobToDelete.DeleteAsync();
         }
         
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

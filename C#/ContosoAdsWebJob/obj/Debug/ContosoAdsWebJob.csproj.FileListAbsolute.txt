@@ -64,3 +64,9 @@ C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.csprojResolveAssemblyReference.cache
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.exe
 C:\Users\csdhall\Desktop\Simple Azure Website with WebJobs using the WebJobs SDK\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.pdb
+C:\Users\csdhall\Desktop\Webjobs\C#\ContosoAdsWebJob\bin\Debug\ContosoAdsWebJob.exe.config
+C:\Users\csdhall\Desktop\Webjobs\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.exe
+C:\Users\csdhall\Desktop\Webjobs\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.pdb
+C:\Users\csdhall\Desktop\WebjobsVirgin\C#\ContosoAdsWebJob\bin\Debug\ContosoAdsWebJob.exe.config
+C:\Users\csdhall\Desktop\WebjobsVirgin\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.exe
+C:\Users\csdhall\Desktop\WebjobsVirgin\C#\ContosoAdsWebJob\obj\Debug\ContosoAdsWebJob.pdb
